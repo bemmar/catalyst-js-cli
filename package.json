@@ -1,7 +1,7 @@
 {
   "name": "catalyst-cli",
   "version": "0.0.1",
-  "description": "catalyst-cli CLI",
+  "description": "catalyst cli",
   "private": true,
   "types": "build/types/types.d.ts",
   "bin": {

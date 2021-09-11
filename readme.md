@@ -1,6 +1,6 @@
-# catalyst-cli CLI
+# catalyst cli
 
-A CLI for catalyst-cli.
+A CLI for catalyst.
 
 ## Customizing your CLI
 
