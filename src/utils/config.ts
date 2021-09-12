@@ -1,12 +1,11 @@
 import { cosmiconfig } from 'cosmiconfig';
-import { CatalystConfig, TemplateElement } from '../types';
+import { CatalystConfig } from '../types';
 
-const defaultConfig: CatalystConfig = {
+export const defaultConfig: CatalystConfig = {
     classNameCasing: "pascal",
     fileNameCasing: "kebab",
     propertyCasing: "camel",
-    modelNameTemplate: `${TemplateElement.EntityName}.model`,
-    serviceNameTemplate: `${TemplateElement.EntityName}.service`,
+    modelTemplateFileName: "__model_file_name__.ts",
     modelPathParts: ["src", "models", "entities"],
     servicePathParts: ["src", "services"]
 };
@@ -14,7 +13,7 @@ const defaultConfig: CatalystConfig = {
 export default async function config(): Promise<Required<CatalystConfig>> {
     const explorer = cosmiconfig("ignored...", {
         searchPlaces: [
-            "catalyst/catalyst-cli.config.json"
+            "catalyst/catalyst-js-cli.config.json"
         ]
     });
 

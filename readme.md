@@ -19,6 +19,17 @@ $ npm test
 $ npm publish
 ```
 
+# Configuration
+TODO - build a table of config values to read from the catalyst/catalyst.json
+delete, get, list, put object names
+model path
+service path
+base model path
+base service path
+file name casing
+class name casing
+property casing
+
 # License
 
 MIT - see LICENSE

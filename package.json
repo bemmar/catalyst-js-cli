@@ -1,11 +1,11 @@
 {
-  "name": "catalyst-cli",
+  "name": "catalyst-js-cli",
   "version": "0.0.1",
   "description": "catalyst cli",
-  "private": true,
+  "private": false,
   "types": "build/types/types.d.ts",
   "bin": {
-    "catalyst-cli": "bin/catalyst-cli"
+    "catalyst": "bin/catalyst"
   },
   "scripts": {
     "format": "prettier --write **/*.{js,ts,tsx,json}",
@@ -50,7 +50,7 @@
     "testEnvironment": "node"
   },
   "prettier": {
-    "semi": false,
+    "semi": true,
     "singleQuote": true
   }
 }

@@ -23,12 +23,11 @@ function stringCasingFunction(casing: StringCasing, strings: GluegunStrings) {
 const command: GluegunCommand = {
     name: 'add',
     run: async toolbox => {
-        const { print, filesystem, meta, parameters, strings } = toolbox
-        const { path, writeAsync, readAsync, cwd, listAsync, isNotFile } = filesystem;
+        const { print, filesystem, meta, parameters, strings, config: toolConfig } = toolbox
+        const { path, writeAsync, readAsync, cwd, listAsync, isNotFile, isDirectory } = filesystem;
 
         const catConfig = await config();
 
-        console.log(catConfig);
         const classNameCaseFn = stringCasingFunction(catConfig.classNameCasing, strings);
         const propertyNameCaseFn = stringCasingFunction(catConfig.propertyCasing, strings);
         const fileNameCaseFn = stringCasingFunction(catConfig.fileNameCasing, strings);
@@ -40,16 +39,32 @@ const command: GluegunCommand = {
 
         const entityName = strings.camelCase(parameters.first);
 
+
+        console.log(JSON.stringify(meta));
+        console.log(JSON.stringify(toolConfig));
+
         const catalystPath = path(`${meta.src}`, "..");
-        const boilerplatePath = path(catalystPath, "boilerplate");
+
+        let boilerplatePath = path(catalystPath, "boilerplate");
+        const customBoilerplatePath = path(cwd(), "catalyst", "boilerplate");
+
+        if (isDirectory(customBoilerplatePath)) {
+            print.info("using custom boilerplate");
+            boilerplatePath = customBoilerplatePath;
+        }
+
+        /**
+         * cwd works while using a npm script..
+         * TODO: check what happens when in a nested directory and calling add - where do the files get placed?
+         */
         const writeTo = cwd();
         const modelPath = path(boilerplatePath, "model");
-        var modelFileNames = await listAsync(modelPath);
+        const modelFileNames = await listAsync(modelPath);
         const fileWriteBasePath = path(writeTo, "_models", "entities", entityName);
-        let modelFileName = "";
+        let modelFileName = catConfig.modelTemplateFileName;
 
         for (const fileName of modelFileNames) {
-            const filePath = path(boilerplatePath, "model", fileName);
+            const filePath = path(modelPath, fileName);
 
             if (isNotFile(filePath)) {
                 continue;
@@ -59,21 +74,13 @@ const command: GluegunCommand = {
 
             let replacedFileName = `${fileNameCaseFn(parsedFileName.name.replace(/__file_name__/g, entityName))}${parsedFileName.ext}`;
 
-            if (fileName === "__model_file_name__.ts") {
+            if (fileName === catConfig.modelTemplateFileName) {
                 replacedFileName = `${fileNameCaseFn(`${parsedFileName.name.replace(/__model_file_name__/g, entityName)}Model`)}${parsedFileName.ext}`;
                 modelFileName = fileNameCaseFn(`${parsedFileName.name.replace(/__model_file_name__/g, entityName)}Model`);
             }
 
             const fileWritePath = path(fileWriteBasePath, replacedFileName);
             let fileContents = await readAsync(filePath);
-
-            /**
-             * TODO
-             * find the replacers
-             * merge the text
-             * apply casing to entire text
-             * replace original text
-             */
 
             fileContents
                 .match(new RegExp(/\b(\w*__property_name__\w*)\b/, "g"))
