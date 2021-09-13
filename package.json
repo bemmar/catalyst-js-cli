@@ -1,5 +1,5 @@
 {
-  "name": "catalyst-js-cli",
+  "name": "@emmar/catalyst-cli",
   "version": "0.0.1",
   "description": "catalyst cli",
   "private": false,
