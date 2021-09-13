@@ -1,36 +1,50 @@
-# catalyst cli
+# Catalyst CLI
+A cli for catalyst entity generation.
 
-A CLI for catalyst.
+## Quick Start
 
-## Customizing your CLI
+```bash
+# install the package as a dev dependency
+npm install --save-dev @emmar/catalyst-cli
+```
 
-Check out the documentation at https://github.com/infinitered/gluegun/tree/master/docs.
+Add npm script to package.json file
+```json
+...
+scripts: {
+    "catalyst": "catalyst"
+}
+...
+```
 
-## Publishing to NPM
+```bash
+# execute the init command
+# this will create a catalyst folder at the root of your project
+# the folder will contain a config file and boilerplate for entity additions
+npm run catalyst init
 
-To package your CLI up for NPM, do this:
-
-```shell
-$ npm login
-$ npm whoami
-$ npm lint
-$ npm test
-(if typescript, run `npm run build` here)
-$ npm publish
+# to add an entity - execute the add command
+npm run catalyst add {{entityName}}
 ```
 
 # Configuration
-TODO - build a table of config values to read from the catalyst/catalyst.json
-delete, get, list, put object names
-model path
-service path
-base model path
-base service path
-file name casing
-class name casing
-property casing
 
-# License
+| Key                   | Description                                          |
+| --------------------- | ---------------------------------------------------- |
+| modelTemplateFileName | Template file name of the Model Class                |
+| modelPathParts        | File path to model folder.                           |
+| servicePathParts      | File path to service folder                          |
+| fileNameCasing        | String [casing](#casing) to use for file names       |
+| classNameCasing       | String [casing](#casing) to use for class names      |
+| propertyCasing        | String [casing](#casing) to use for class properties |
 
-MIT - see LICENSE
+## Casing
 
+| Name   | Example           |
+| ------ | ----------------- |
+| snake  | string_snake_case |
+| kebab  | string-kebab-case |
+| camel  | stringCamelCase   |
+| pascal | StringPascalCase  |
+| upper  | STRINGUPPERCASE   |
+| lower  | stringlowercase   |

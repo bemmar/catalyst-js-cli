@@ -6,7 +6,7 @@ export type StringCasing =
   | 'camel'
   | 'pascal'
   | 'upper'
-  | 'lower'
+  | 'lower';
 
 export enum ReplacerString {
   modelName = '__model_name__',
@@ -19,25 +19,25 @@ export type CatalystConfig = {
   /**
    * Template file name of the Model class.
    */
-  modelTemplateFileName?: string
+  modelTemplateFileName?: string;
   /**
    * File path to model folder.
    */
-  modelPathParts?: string[]
+  modelPathParts?: string[];
   /**
    * File path to service folder.
    */
-  servicePathParts?: string[]
+  servicePathParts?: string[];
   /**
    * String casing to use for file names.
    */
-  fileNameCasing?: StringCasing
+  fileNameCasing?: StringCasing;
   /**
    * String casing to use for class names.
    */
-  classNameCasing?: StringCasing
+  classNameCasing?: StringCasing;
   /**
    * String casing to use for class properties.
    */
-  propertyCasing?: StringCasing
-}
+  propertyCasing?: StringCasing;
+};
