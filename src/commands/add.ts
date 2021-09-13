@@ -60,7 +60,7 @@ const command: GluegunCommand = {
         const writeTo = cwd();
         const modelPath = path(boilerplatePath, "model");
         const modelFileNames = await listAsync(modelPath);
-        const fileWriteBasePath = path(writeTo, "_models", "entities", entityName);
+        const fileWriteBasePath = path(writeTo, ...catConfig.modelPathParts, entityName);
         let modelFileName = catConfig.modelTemplateFileName;
 
         for (const fileName of modelFileNames) {

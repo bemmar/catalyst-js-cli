@@ -1,5 +1,6 @@
 import { GluegunCommand } from 'gluegun'
 import { defaultConfig } from '../utils/config';
+import { Word } from '../utils/constants';
 
 
 const command: GluegunCommand = {
@@ -38,7 +39,7 @@ const command: GluegunCommand = {
         await copyAsync(catalystBoilerplatePath, path(customCatalystPath, "boilerplate"), { overwrite: force });
 
         const defaultConfigJson = JSON.stringify(defaultConfig, null, 4);
-        const customConfigPath = path(customCatalystPath, "catalyst-js-cli.config.json");
+        const customConfigPath = path(customCatalystPath, Word.configFileName);
 
         await writeAsync(customConfigPath, defaultConfigJson);
     },

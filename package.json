@@ -1,6 +1,6 @@
 {
   "name": "@emmar/catalyst-cli",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "catalyst cli",
   "private": false,
   "types": "build/types/types.d.ts",
@@ -27,7 +27,8 @@
     "LICENSE",
     "readme.md",
     "docs",
-    "bin"
+    "bin",
+    "boilerplate"
   ],
   "license": "MIT",
   "dependencies": {

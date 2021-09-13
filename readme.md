@@ -29,6 +29,8 @@ npm run catalyst add {{entityName}}
 
 # Configuration
 
+Config file is read from catalyst/catalyst-cli.config.json
+
 | Key                   | Description                                          |
 | --------------------- | ---------------------------------------------------- |
 | modelTemplateFileName | Template file name of the Model Class                |

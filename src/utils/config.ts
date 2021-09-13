@@ -1,5 +1,6 @@
 import { cosmiconfig } from 'cosmiconfig';
 import { CatalystConfig } from '../types';
+import { Word } from './constants';
 
 export const defaultConfig: CatalystConfig = {
     classNameCasing: "pascal",
@@ -13,7 +14,7 @@ export const defaultConfig: CatalystConfig = {
 export default async function config(): Promise<Required<CatalystConfig>> {
     const explorer = cosmiconfig("ignored...", {
         searchPlaces: [
-            "catalyst/catalyst-js-cli.config.json"
+            `catalyst/${Word.configFileName}`
         ]
     });
 
