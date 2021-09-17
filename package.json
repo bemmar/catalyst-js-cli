@@ -1,6 +1,6 @@
 {
   "name": "@emmar/catalyst-cli",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "catalyst cli",
   "private": false,
   "types": "build/types/types.d.ts",

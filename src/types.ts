@@ -21,13 +21,9 @@ export type CatalystConfig = {
    */
   modelTemplateFileName?: string;
   /**
-   * File path to model folder.
+   * Key = source folder name (catalyst/{folder name}) and array of path parts points to destination folder.
    */
-  modelPathParts?: string[];
-  /**
-   * File path to service folder.
-   */
-  servicePathParts?: string[];
+  pathParts: Record<string, string[]>;
   /**
    * String casing to use for file names.
    */
@@ -40,4 +36,12 @@ export type CatalystConfig = {
    * String casing to use for class properties.
    */
   propertyCasing?: StringCasing;
+  /**
+   * Suffix for a Model name.
+   */
+  modelNameSuffix: string;
+  /**
+   * Suffix for an ID property.
+   */
+  IdNameSuffix: string;
 };

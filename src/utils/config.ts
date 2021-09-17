@@ -7,8 +7,12 @@ export const defaultConfig: CatalystConfig = {
     fileNameCasing: "kebab",
     propertyCasing: "camel",
     modelTemplateFileName: "__model_file_name__.ts",
-    modelPathParts: ["src", "models", "entities"],
-    servicePathParts: ["src", "services"]
+    pathParts: {
+        "model": ["src", "models", "entities"],
+        "service": ["src", "services"]
+    },
+    modelNameSuffix: "Model",
+    IdNameSuffix: "Id"
 };
 
 export default async function config(): Promise<Required<CatalystConfig>> {

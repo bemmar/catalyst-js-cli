@@ -35,7 +35,7 @@ Config file is read from catalyst/catalyst-cli.config.json
 | --------------------- | ---------------------------------------------------- |
 | modelTemplateFileName | Template file name of the Model Class                |
 | modelPathParts        | File path to model folder.                           |
-| servicePathParts      | File path to service folder                          |
+| pathParts      | Key = source folder name (catalyst/{folder name}) and array of path parts points to destination folder.                           |
 | fileNameCasing        | String [casing](#casing) to use for file names       |
 | classNameCasing       | String [casing](#casing) to use for class names      |
 | propertyCasing        | String [casing](#casing) to use for class properties |
